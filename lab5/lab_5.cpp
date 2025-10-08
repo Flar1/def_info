@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// Быстрое возведение в степень по модулю
 long long modPow(long long a, long long n, long long m) {
     long long res = 1;
     a %= m;
@@ -17,8 +16,7 @@ long long modPow(long long a, long long n, long long m) {
     return res;
 }
 
-// === Шифрование файла ===
-// Каждый байт превращаем в число (0..255) и шифруем по Эль-Гамалю
+
 void encryptFile(const string &inputFile, const string &outputFile,
                  long long p, long long g, long long dB, long long k) {
     ifstream in(inputFile, ios::binary);
@@ -31,16 +29,15 @@ void encryptFile(const string &inputFile, const string &outputFile,
 
     unsigned char byte;
     while (in.read((char*)&byte, 1)) {
-        long long m = byte; // сообщение = байт
+        long long m = byte; 
         long long r = modPow(g, k, p);
         long long e = (m * modPow(dB, k, p)) % p;
-        out << r << " " << e << "\n"; // сохраняем как пары чисел
+        out << r << " " << e << "\n";
     }
 
     cout << "Файл " << inputFile << " зашифрован в " << outputFile << endl;
 }
 
-// === Расшифровка файла ===
 void decryptFile(const string &inputFile, const string &outputFile,
                  long long p, long long xB) {
     ifstream in(inputFile);
@@ -63,13 +60,11 @@ void decryptFile(const string &inputFile, const string &outputFile,
 }
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-
     long long p = 23;
     long long g = 5;
-    long long xB = 13; // секретный ключ получателя B
-    long long dB = modPow(g, xB, p); // открытый ключ B
-
+    long long xB = 13; 
+    long long dB = modPow(g, xB, p);
+    
     cout << "p = " << p << ", g = " << g << endl;
     cout << "Секретный ключ B = " << xB << endl;
     cout << "Открытый ключ dB = " << dB << endl;
