@@ -1,0 +1,11 @@
+{
+  "editor.fontFamily": "Myna",
+  "editor.fontSize": 20,
+  "terminal.integrated.fontFamily": "Myna",
+  "terminal.integrated.fontSize": 16,
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.lineHeight": 35,
+  "breadcrumbs.enabled": true
+}
